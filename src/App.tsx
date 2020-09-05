@@ -1,6 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import 'App.css';
+import "App.css";
+import MessageArea from "components/MessageArea";
+import ChatInput from "components/ChatInput";
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
       </header>
       <div>
         <p>本文</p>
+        <MessageArea user="whopper" text="わぱー" />
       </div>
+      <ChatInput />
     </div>
   );
 }
