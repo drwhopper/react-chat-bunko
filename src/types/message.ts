@@ -5,4 +5,4 @@ export type MessageType = {
 
 export type Messages = {
   msgs: MessageType[]
-} 
+}
