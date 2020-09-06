@@ -4,6 +4,13 @@ import "App.css";
 import MessageArea from "components/MessageArea";
 import ChatInput from "components/ChatInput";
 
+type MessageType = {
+  user: string,
+  text: string
+}
+
+const m: MessageType[] = [{user: "whopper", text:"わぱー"}];
+
 function App() {
   return (
     <div className="App">
@@ -14,7 +21,7 @@ function App() {
       </header>
       <div>
         <p>本文</p>
-        <MessageArea user="whopper" text="わぱー" />
+        <MessageArea msgs={m}/>
       </div>
       <ChatInput />
     </div>

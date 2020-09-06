@@ -5,11 +5,23 @@ type MessageType = {
   text: string
 }
 
-export default function MessageArea(props: MessageType) {
-    return(
-      <div>
-        <span>{props.user}：</span>
-        <div>「{props.text}」</div>
-      </div>
-    )
-}
+type Messages = {
+  msgs: MessageType[]
+} 
+
+const MessageItem: React.FC<MessageType> = (props) => (
+  <div>
+    <span>{props.user}：</span>
+    <div>「{props.text}」</div>
+  </div>
+)
+
+const MessageArea: React.FC<Messages> = (props) => (
+  <div>
+    {props.msgs.map((m) => {
+      return <MessageItem user={m.user} text={m.text} />
+      })}
+  </div>
+)
+
+export default MessageArea;
