@@ -1,27 +1,22 @@
 import React from 'react';
 
-type MessageType = {
-  user: string,
-  text: string
-}
+import { MessageType, Messages } from 'types/message';
 
-type Messages = {
-  msgs: MessageType[]
-} 
-
-const MessageItem: React.FC<MessageType> = (props) => (
+const MessageItem: React.FC<MessageType> = ({ user, text }: MessageType) => (
   <div>
-    <span>{props.user}：</span>
-    <div>「{props.text}」</div>
+    <span>{user}</span>
+    <div>
+      「
+      {text}
+      」
+    </div>
   </div>
-)
+);
 
-const MessageArea: React.FC<Messages> = (props) => (
+const MessageArea: React.FC<Messages> = ({ msgs }: Messages) => (
   <div>
-    {props.msgs.map((m) => {
-      return <MessageItem user={m.user} text={m.text} />
-      })}
+    {msgs.map((m) => <MessageItem user={m.user} text={m.text} />)}
   </div>
-)
+);
 
 export default MessageArea;

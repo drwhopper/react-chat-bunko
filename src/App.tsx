@@ -1,15 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import "App.css";
-import MessageArea from "components/MessageArea";
-import ChatInput from "components/ChatInput";
+import 'App.css';
+import MessageArea from 'components/MessageArea';
+import ChatInput from 'components/ChatInput';
 
-type MessageType = {
-  user: string,
-  text: string
-}
+import { MessageType } from 'types/message';
 
-const m: MessageType[] = [{user: "whopper", text:"わぱー"}];
+const m: MessageType[] = [{ user: 'whopper', text: 'わぱー' }];
 
 function App() {
   return (
@@ -21,7 +18,7 @@ function App() {
       </header>
       <div>
         <p>本文</p>
-        <MessageArea msgs={m}/>
+        <MessageArea msgs={m} />
       </div>
       <ChatInput />
     </div>

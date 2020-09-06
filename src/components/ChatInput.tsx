@@ -1,19 +1,20 @@
 import React from 'react';
 
+// import {MessageType} from "types/message";
+
 class ChatInput extends React.Component {
-
-  sendMessage(name: string, msg: string) {
-
+  static sendMessage(): string {
+    return '';
   }
 
-  render() {
+  render(): React.ReactNode {
     return (
       <div>
         <input type="text" name="name" />
         <input type="text" name="msg" />
         <input type="submit" value="Send" />
       </div>
-    )
+    );
   }
 }
 
