@@ -12,7 +12,7 @@ interface CurrentData {
   msgs: Messages,
 }
 
-class App extends React.Component<unknown, CurrentData> {
+class App extends React.Component<{}, CurrentData> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -35,14 +35,15 @@ class App extends React.Component<unknown, CurrentData> {
 
   handleClick: React.MouseEventHandler<HTMLInputElement> = () => {
     const { msg, msgs } = this.state;
-    console.log(msg.user);
-    console.log(msg.text);
     this.setState({msgs: msgs.concat(msg)});
-    console.log(msgs);
+    this.setState({msg: {
+      user: '',
+      text: '',
+    },})
   }
 
   render() {
-    const { msgs } = this.state;
+    const { msg, msgs } = this.state;
     return (
       <div className="App">
         <header className="App-header">
@@ -55,6 +56,8 @@ class App extends React.Component<unknown, CurrentData> {
           <MessageArea msgs={msgs} />
         </div>
         <ChatInput
+          user = {msg.user}
+          text = {msg.text}
           onClick={(e) => this.handleClick(e)}
           onTextChange={(e) => this.onTextChange(e)}
         />
