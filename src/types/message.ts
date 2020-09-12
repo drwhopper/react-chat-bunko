@@ -3,6 +3,4 @@ export type MessageType = {
   text: string
 }
 
-export type Messages = {
-  msgs: MessageType[]
-}
+export type Messages = MessageType[]

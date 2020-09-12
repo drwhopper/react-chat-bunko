@@ -4,26 +4,45 @@ import 'App.css';
 import MessageArea from 'components/MessageArea';
 import ChatInput from 'components/ChatInput';
 
-import { MessageType } from 'types/message';
+import { MessageType, Messages } from 'types/message';
 
-const m: MessageType[] = [{ user: 'whopper', text: 'わぱー' }];
+// const m: MessageType[] = [{ user: 'whopper', text: 'わぱー' }];
+interface CurrentData {
+  msg: MessageType,
+  msgs: Messages,
+}
 
-class App extends React.Component<unknown, MessageType> {
+class App extends React.Component<unknown, CurrentData> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      msg: {
+        user: '',
+        text: '',
+      },
+      msgs: [{ user: 'whopper', text: 'わぱー' }],
+    };
+  }
+
   onTextChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    if (e.target.name === 'name') {
-      this.setState({ user: e.target.value });
-    } else if (e.target.name === 'msg') {
-      this.setState({ text: e.target.value });
+    e.persist();
+    if (e.target.id === 'name') {
+      this.setState((prevState) => ({ msg: { user: e.target.value, text: prevState.msg.text } }));
+    } else if (e.target.id === 'msg') {
+      this.setState((prevState) => ({ msg: { user: prevState.msg.user, text: e.target.value } }));
     }
   };
 
   handleClick: React.MouseEventHandler<HTMLInputElement> = () => {
-    const { user, text } = this.state;
-    console.log(user);
-    console.log(text);
+    const { msg, msgs } = this.state;
+    console.log(msg.user);
+    console.log(msg.text);
+    this.setState({msgs: msgs.concat(msg)});
+    console.log(msgs);
   }
 
   render() {
+    const { msgs } = this.state;
     return (
       <div className="App">
         <header className="App-header">
@@ -33,7 +52,7 @@ class App extends React.Component<unknown, MessageType> {
         </header>
         <div>
           <p>本文</p>
-          <MessageArea msgs={m} />
+          <MessageArea msgs={msgs} />
         </div>
         <ChatInput
           onClick={(e) => this.handleClick(e)}

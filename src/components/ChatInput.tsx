@@ -24,8 +24,8 @@ class ChatInput extends React.Component<ChatInputProps, ChatInputState> {
   render(): React.ReactNode {
     return (
       <div>
-        <input type="text" name="name" onChange={(e) => this.onTextChange(e)} />
-        <input type="text" name="msg" onChange={(e) => this.onTextChange(e)} />
+        <input type="text" id="name" onChange={(e) => this.onTextChange(e)} />
+        <input type="text" id="msg" onChange={(e) => this.onTextChange(e)} />
         <input type="submit" value="Send" onClick={(e) => this.onClick(e)} />
       </div>
     );
