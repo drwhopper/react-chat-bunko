@@ -1,4 +1,5 @@
 export type MessageType = {
+  timestamp?: number;
   user: string,
   text: string
 }

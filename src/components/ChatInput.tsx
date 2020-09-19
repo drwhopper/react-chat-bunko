@@ -3,8 +3,8 @@ import React from 'react';
 import {MessageType} from 'types/message';
 
 interface ChatInputProps {
-  onClick: (e: React.MouseEvent<HTMLInputElement>) => void;
-  onTextChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onClick: React.MouseEventHandler<HTMLInputElement>;
+  onTextChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 interface ChatInputState extends MessageType, ChatInputProps{};

@@ -36,10 +36,7 @@ class App extends React.Component<{}, CurrentData> {
   handleClick: React.MouseEventHandler<HTMLInputElement> = () => {
     const { msg, msgs } = this.state;
     this.setState({msgs: msgs.concat(msg)});
-    this.setState({msg: {
-      user: '',
-      text: '',
-    },})
+    this.setState((prevState) => ({ msg: { user: prevState.msg.user, text: '' } }));
   }
 
   render() {
