@@ -33,7 +33,7 @@ class App extends React.Component<{}, CurrentData> {
     }
   };
 
-  handleClick: React.MouseEventHandler<HTMLInputElement> = () => {
+  sendMessage = () => {
     const { msg, msgs } = this.state;
     this.setState({msgs: msgs.concat(msg)});
     this.setState((prevState) => ({ msg: { user: prevState.msg.user, text: '' } }));
@@ -55,7 +55,7 @@ class App extends React.Component<{}, CurrentData> {
         <ChatInput
           user = {msg.user}
           text = {msg.text}
-          onClick={(e) => this.handleClick(e)}
+          send={() => this.sendMessage()}
           onTextChange={(e) => this.onTextChange(e)}
         />
       </div>
